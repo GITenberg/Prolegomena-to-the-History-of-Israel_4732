@@ -1,0 +1,27 @@
+_repo: Prolegomena-to-the-History-of-Israel_4732
+alternative_title: Prolegomena zur Geschichte Israels. English
+creator:
+  author:
+    agent_name: Wellhausen, Julius
+    birthdate: 1844
+    deathdate: 1918
+    gutenberg_agent_id: '1562'
+    url: http://www.gutenberg.org/2009/agents/1562
+    wikipedia: http://en.wikipedia.org/wiki/Julius_Wellhausen
+description: ''
+gutenberg_bookshelf: Judaism
+gutenberg_issued: '2003-12-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '4732'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Jews -- History -- To 70 A.D.'
+- !lcc 'DS'
+- !lcsh 'Bible. Old Testament -- Criticism, interpretation, etc.'
+- !lcsh 'Judaism -- History -- To 70 A.D.'
+title: Prolegomena to the History of Israel
+url: http://www.gutenberg.org/ebooks/4732
