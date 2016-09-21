@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: DioQVpdpsKgnCyl1WxDP7yPTKTxZoOo9UBChBkzhBQEdnDPy8isIunc15c/AUYe/ZZbWqWR7hVhTe2iSb/hceeTyuHxF60uNJaX45dAqUHKMXzizoMZA1wVPZb6eq+eG8mo5uW61JsVLNTVYGm/RNpzOmrIo/r0AxZUJo/m2QFTTOOL7bWiPmXc3yi2eHYZsBMERYynTo6dTSawlskNlSWdi5qa5s5SpulQgvHo71zl0WMWKVbnJmyHOvwAwmg73f9jmtjkpcFSGxJGZkzX7KnKuVd1rqOnYCzot+h3M7QfO1AU4VC+/BumgsCxybWxCbJZfDzIY+DlbwAoccNi+3/eXnI0Mtu6pJtvxQUghej+qhmMzeohSKm0ZpPPTpQ06OODQ9ShrwzF6GPVrU9X2MNDl+liXelZ5ifE0wZEy2AVFmOY22PYo7RGFfFK1zZY0B4lLN24hxKQqGyirtla3NQah/ucou93KN2qKNAqwez/MeWcnYEUgJlSRZMEvLbdukSmkDi0dIqGX5Qx8s9LyMDXiroePIYdXzSfexbek7cAZXeDRdgfNjBnQUTHgCx0yJtjbPqb6yjNxXhqhVzUKhShaTm8G7Q7nmaH4qTauriTOPIJM/XiJtOyOJeiIceaeZXMEGt58Rma517LRYaAxb+l0CPY2os1wCTTsVd5ftFE=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Prolegomena-to-the-History-of-Israel_4732
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
