@@ -1,5 +1,5 @@
 _repo: Prolegomena-to-the-History-of-Israel_4732
-_version: 0.2.0
+_version: 0.2.1
 alternative_title: Prolegomena zur Geschichte Israels. English
 covers:
 - cover_type: generated
@@ -29,5 +29,6 @@ subjects:
 - !lcc 'DS'
 - !lcsh 'Bible. Old Testament -- Criticism, interpretation, etc.'
 - !lcsh 'Judaism -- History -- To 70 A.D.'
+- GITenberg
 title: Prolegomena to the History of Israel
 url: http://www.gutenberg.org/ebooks/4732
